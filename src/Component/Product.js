@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Product = (props) => {
-    console.log(props.product);
     const {image,name,price,category} = props.product;
+
     const handleClick = (product) => {
         console.log(product);
     }

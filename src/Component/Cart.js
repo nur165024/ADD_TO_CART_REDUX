@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import NavBar from './NavBar';
 
 const Cart = (props) => {
-    const {cart} = props;
+    // const {cart} = props;
     
-    const [number,setNumber] = useState(1);
+    // const [number,setNumber] = useState(1);
     
-    const decrease = () => {
-        if(number > 1) {
-            return setNumber(number - 1); 
-        }else{
-            return 0;
-        }
-    }
+    // const decrease = () => {
+    //     if(number > 1) {
+    //         return setNumber(number - 1); 
+    //     }else{
+    //         return 0;
+    //     }
+    // }
 
     return (
         <>
