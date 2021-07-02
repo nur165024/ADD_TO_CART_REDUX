@@ -9,7 +9,7 @@ ul{
 }
 a{
   text-decoration: none !important;
-  color: #fff !important;
+  color: #999 !important;
   margin: 0 10px;
   padding: 15px;
   display: block;
@@ -17,6 +17,7 @@ a{
 }
 a:hover{
   background-color: tomato;
+  color: #fff !important;
 }
 #content{
   margin: 30px 0;

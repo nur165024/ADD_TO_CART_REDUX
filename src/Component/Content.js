@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Product from './Product';
-import Data from '../Component/Data'
-// import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import {productList} from '../redux/actions/productAction';
 
 const Content = () => {
-    // const {productList} = useSelector((state) => state.productList);
+    const {loading,products} = useSelector((state) => state.productList);
+    
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        dispatch(productList())
+    },[dispatch])
     
     return (
         <>
@@ -12,7 +18,8 @@ const Content = () => {
                 <div className="container">
                     <div className="row">
                         {
-                            Data.map(pd => <Product key={pd.id} product={pd}></Product>)
+                            loading ? "loading...": 
+                            products.map(pd => <Product key={pd.id} product={pd}></Product>)
                         }
                     </div>
                 </div>
