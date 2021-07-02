@@ -1,9 +1,10 @@
 import React from 'react';
 import Product from './Product';
-import { useSelector } from 'react-redux';
+import Data from '../Component/Data'
+// import { useSelector } from 'react-redux';
 
 const Content = () => {
-    const {productList} = useSelector((state) => state.productList);
+    // const {productList} = useSelector((state) => state.productList);
     
     return (
         <>
@@ -11,7 +12,7 @@ const Content = () => {
                 <div className="container">
                     <div className="row">
                         {
-                            productList.map(pd => <Product key={pd.id} product={pd}></Product>)
+                            Data.map(pd => <Product key={pd.id} product={pd}></Product>)
                         }
                     </div>
                 </div>
