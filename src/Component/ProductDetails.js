@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 
 const ProductDetails = () => {
     let { id } = useParams();
-    const [number,setNumber] = useState(1);
+    const [qty,setQty] = useState(1);
     const productDetails = useSelector((state) => state.productDetails);
     const {name,price,image,category} = productDetails.product;
     
@@ -19,8 +19,8 @@ const ProductDetails = () => {
 
     // decrease
     const decrease = () => {
-        if(number > 1) {
-            return setNumber(number - 1); 
+        if(qty > 1) {
+            return setQty(qty - 1);
         }else{
             return 0;
         }
@@ -52,8 +52,8 @@ const ProductDetails = () => {
                                             <p className="text-danger my-2">Price : ${price}</p>
                                             <div className="d-flex d-inline-block w-50 my-3 bg-secondary">
                                                 <button className="btn" type="button" onClick={decrease}>-</button>
-                                                    <p style={{ width:"50px",textAlign:"center",height:"40px",lineHeight:"35px" }}>{number}</p>
-                                                <button className="btn" type="button" onClick={() => setNumber(number + 1)}>+</button>
+                                                    <p style={{ width:"50px",textAlign:"center",height:"40px",lineHeight:"35px" }}>{qty}</p>
+                                                <button className="btn" type="button" onClick={() => setQty(qty + 1)}>+</button>
                                             </div>
                                             <button className="btn btn-outline-primary">Add To Cart</button>
                                         </div>
