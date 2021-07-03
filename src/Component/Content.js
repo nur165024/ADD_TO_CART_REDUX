@@ -5,26 +5,24 @@ import {productList} from '../redux/actions/productAction';
 
 const Content = () => {
     const {loading,products} = useSelector((state) => state.productList);
-    
     const dispatch = useDispatch();
-    
+    // product list dispatch
     useEffect(() => {
         dispatch(productList())
-    },[dispatch])
+    },[dispatch]);
+    
     
     return (
-        <>
-            <section id="content">
-                <div className="container">
-                    <div className="row">
-                        {
-                            loading ? "loading...": 
-                            products.map(pd => <Product key={pd.id} product={pd}></Product>)
-                        }
-                    </div>
+        <section id="content">
+            <div className="container">
+                <div className="row">
+                    {
+                        loading ? "loading...": 
+                        products.map(pd => <Product key={pd.id} product={pd}></Product>)
+                    }
                 </div>
-            </section>
-        </>
+            </div>
+        </section>
     );
 };
 

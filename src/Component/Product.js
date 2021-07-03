@@ -3,16 +3,13 @@ import { Link } from 'react-router-dom';
 
 const Product = (props) => {
     const {id,image,name,price,category} = props.product;
-
-    const handleClick = (product) => {
-        console.log(product);
-    }
+    const addToCart = props.addToCart;
 
     // product name slug 
-    const convertToSlug = (Text) => {
-        return Text.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'')
-    }
-    console.log(convertToSlug(name))
+    // const convertToSlug = (Text) => {
+    //     return Text.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'')
+    // }
+    // console.log(convertToSlug(name))
         
     return (
         <div className="col-md-3">
@@ -23,9 +20,9 @@ const Product = (props) => {
                         <h5 className="card-title">{name}</h5>
                         <p className="card-text">Price : ${price}</p>
                         <p className="card-text">Category Name : {category}</p>
-                        <button onClick={() => handleClick(props.product)} className="btn btn-primary mt-3">Add To Card</button>
                     </div>
                 </Link>
+                <button onClick={() => addToCart(props.product)} className="btn btn-primary mt-3">Add To Card</button>
             </div>
         </div>
     );

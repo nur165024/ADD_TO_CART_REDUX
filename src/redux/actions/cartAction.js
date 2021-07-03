@@ -1,14 +1,15 @@
 import { ADD_TO_CART } from "../constants/cartConstant"
 
-const addToCart = (product,qty) => (dispatch,getState) => {
+export const addToCart = (product,qty) => (dispatch,getState) => {
+    let {name,image,category,price} = product;
     dispatch({
         type: ADD_TO_CART,
         payload: {
-            name: product.name,
-            image: product.image,
-            category: product.category,
-            price: product.price,
-            qty,
+            name: name,
+            image: image,
+            category: category,
+            price: price,
+            qty: qty,
         }
     })
 }

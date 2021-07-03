@@ -4,19 +4,34 @@ import { useDispatch, useSelector } from 'react-redux';
 import NavBar from './NavBar';
 import {product} from '../redux/actions/productAction';
 import { useParams } from 'react-router-dom';
+import { addToCart } from '../redux/actions/cartAction';
+
+
+// product name slug 
+// const convertToSlug = (Text) => {
+//     return Text.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'')
+// }
+// console.log(convertToSlug(name))
 
 const ProductDetails = () => {
+    // product details id
     let { id } = useParams();
+    // add to cart state
+    const[addCart,setAddCart] = useState([]);
+    // onclick increase qty
     const [qty,setQty] = useState(1);
+    // product details
     const productDetails = useSelector((state) => state.productDetails);
     const {name,price,image,category} = productDetails.product;
-    
+    // add to cart redux
+    const cart = useSelector((state) => state.cart);
+    console.log(cart);
     // redux product details load
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(product(id))
     },[dispatch,id]);
-
+    
     // decrease
     const decrease = () => {
         if(qty > 1) {
@@ -26,11 +41,25 @@ const ProductDetails = () => {
         }
     }
 
-    // product name slug 
-    // const convertToSlug = (Text) => {
-    //     return Text.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'')
+    // add to cart redux
+    useEffect(() => {
+        dispatch(addToCart(productDetails.product,qty))
+    },[dispatch,productDetails.product,qty])
+
+    // const handleClick = (product) => {
+    //     let newCart = {
+    //         id: product.id,
+    //         name: product.name,
+    //         image: product.image,
+    //         price: product.price,
+    //         category: product.category,
+    //         qty: qty,
+    //     }
+    //     setAddCart([...addCart,newCart]);
     // }
-    // console.log(convertToSlug(name))
+
+
+
 
     return (
         <>
@@ -55,7 +84,7 @@ const ProductDetails = () => {
                                                     <p style={{ width:"50px",textAlign:"center",height:"40px",lineHeight:"35px" }}>{qty}</p>
                                                 <button className="btn" type="button" onClick={() => setQty(qty + 1)}>+</button>
                                             </div>
-                                            <button className="btn btn-outline-primary">Add To Cart</button>
+                                            <button onClick={() => addToCart(productDetails.product,qty)} className="btn btn-outline-primary">Add To Cart</button>
                                         </div>
                                     </div>
                                 </div>
